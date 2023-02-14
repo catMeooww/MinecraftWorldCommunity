@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>Minecraft Community</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="MinecraftPage.js"></script>
+    <style>
+        body {
+            background-color: rgb(144, 245, 206);
+            text-align: center;
+            background-image: url("UserCreeper.png");
+            background-position: center;
+            background-size: cover;
+        }
+
+        #logo {
+            width: 100%;
+            height: 32%;
+            border-style: outset;
+            border-width: 2px;
+            border-color: chartreuse;
+        }
+
+        #Exit {
+            z-index: 2;
+            top: 150px;
+            right: 30px;
+            color: red;
+            border-style: outset;
+            border-width: 2px;
+            border-color: red;
+            background-color: rgba(51, 22, 8, 0.027);
+            position: absolute;
+        }
+
+        .user_tick {
+            width: 20px;
+        }
+
+        .message_h4 {
+            padding-left: 5px;
+            color: grey;
+        }
+
+        #mensages {
+            width: 100%;
+            height: 80%;
+            border-style: dashed;
+            border-width: 1px;
+            border-color: aliceblue;
+        }
+
+        #mensageInput {
+            width: 80%;
+        }
+
+        #mensageButton {
+            width: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="MinecraftSitesLogo.png" id="Logo">
+    <button id="Exit" onclick="logout()">Exit</button>
+    <br>
+    <div id="output" style="text-align: left;margin-bottom: 70px; background-color: rgb(155, 247, 155);"> 
+    <br>
+    </div>
+    <br>
+    <div class="inputDivMessagePage" style="background-color: aliceblue;">
+        <label>Enviar:</label>
+        <input type="text" id="msg" class="form-control" placeholder="Mensagem">
+        <button onclick="send()" class="btn btn-success">Enviar</button>
+    </div>
+</body>
+
+</html>

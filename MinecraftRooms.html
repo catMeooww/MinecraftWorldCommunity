@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <title>Minecraft Rooms (MINECRAFT WORLD COMMUNITY)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="rooms.js"></script>
+    <style>
+        body {
+            background-color: rgb(144, 245, 206);
+            text-align: left;
+            background-image: url("MinecraftWorld.png");
+            background-position: center;
+            background-size: cover;
+        }
+
+        #logo {
+            width: 100%;
+            height: 32%;
+            border-style: outset;
+            border-width: 2px;
+            border-color: chartreuse;
+        }
+
+        #Exit {
+            z-index: 2;
+            top: 150px;
+            right: 30px;
+            color: red;
+            border-style: outset;
+            border-width: 2px;
+            border-color: red;
+            background-color: rgba(51, 22, 8, 0.027);
+            position: absolute;
+        }
+
+        p,
+        label,
+        h3 {
+            color: white;
+        }
+        .roomName {
+	cursor: pointer;
+	font-size: 20px;
+}
+    </style>
+</head>
+
+<body onload="loadUser()">
+    <img src="MinecraftSitesLogo.png" id="Logo">
+    <button id="Exit" onclick="logout()">Log-Out</button>
+    <br>
+    <img src="UserCreeper.png" width="30px" height="30px"><br>
+    <p id="userName"></p>
+    <hr>
+    <div class="form-group input_div_room_page">
+        <label>Add a new Minecraft Room:</label>
+        <br>
+        <input type="text" id="roomName" placeholder="#room">
+        <button style="background-color: rgb(233, 79, 8);border-radius: 5px;" onclick="selectGamemode()"
+            id="gamemode">survival</button>
+    </div>
+
+    <button onclick="addRoom();" class="btn btn-success">Add Room</button>
+    <hr>
+    <h3 class="color_white">Minecraft Rooms</h3>
+
+    <div id="output"></div>
+</body>
+
+</html>
