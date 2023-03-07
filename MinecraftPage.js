@@ -1,18 +1,4 @@
 
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyBDXlPghTnebO2CbPG-8kMuW-jUu6QzJeE",
-  authDomain: "minecraftcommunity-6b81a.firebaseapp.com",
-  databaseURL: "https://minecraftcommunity-6b81a-default-rtdb.firebaseio.com",
-  projectId: "minecraftcommunity-6b81a",
-  storageBucket: "minecraftcommunity-6b81a.appspot.com",
-  messagingSenderId: "770302856414",
-  appId: "1:770302856414:web:c61c0308eff9d7f485c64f"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
 userName = localStorage.getItem("user");
 roomName = localStorage.getItem("roomName");
 
