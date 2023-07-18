@@ -13,7 +13,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 userName = localStorage.getItem("user");
-roomName = localStorage.getItem("roomName");
+roomName = localStorage.getItem("room");
 
 function send() {
   msg = document.getElementById("msg").value;
