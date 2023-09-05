@@ -22,7 +22,8 @@
             text-align: center;
             background-image: url("Wood Background.jpg");
             background-position: center;
-            background-size: cover;
+            background-size: 1500px;
+            background-repeat: repeat-y;
         }
 
         #logo {
@@ -45,13 +46,28 @@
             position: absolute;
         }
 
+        #output {
+            width: 90%;
+            background-color: rgba(0, 155, 160, 0.39);
+            border-style: solid;
+            border-width: 3px;
+            border-color: green;
+            color: gold;
+        }
+
         .user_tick {
             width: 20px;
         }
 
         .message_h4 {
             padding-left: 5px;
-            color: grey;
+            color: white;
+        }
+
+        .message_h4:hover{
+            border-style: ridge;
+            border-color: blue;
+            border-width: 2px;
         }
 
         #mensages {
@@ -75,12 +91,17 @@
 <body>
     <img src="MinecraftSitesLogo.png" id="Logo">
     <button id="Exit" onclick="logout()">Exit</button>
+    <br><br>
+    <hr><br>
+    <center>
+        <div id="output">
+            <p>-----A new Minecraft Room Started!-----
+                <hr>
+            </p>
+        </div>
+    </center>
     <br>
-    <div id="output" style="text-align: left;margin-bottom: 70px; background-color: rgb(155, 247, 155);">
-        <br>
-    </div>
-    <br>
-    <div class="inputDivMessagePage" style="background-color: aliceblue;">
+    <div title="Send mensages in this Minecraft Room" class="inputDivMessagePage" style="background-color: aliceblue;">
         <label>Enviar:</label>
         <input type="text" id="msg" class="form-control" placeholder="Mensagem">
         <button onclick="send()" class="btn btn-success">Enviar</button>

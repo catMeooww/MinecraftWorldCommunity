@@ -48,7 +48,7 @@ function getData() {
       childKey = childSnapshot.key;
       roomNames = childKey;
       console.log("Nome da Sala - " + roomNames);
-      row = "<div class='roomName' id=" + roomNames + " onclick='redirectToRoomName(this.id)' style='background: rgba(255, 255, 255, 0.8);'>" + roomNames + "</div><br><br>";
+      row = "<div class='roomName' id=" + roomNames + " onclick='redirectToRoomName(this.id)'>" + roomNames + "</div><br><br>";
       document.getElementById("output").innerHTML += row;
     });
   });

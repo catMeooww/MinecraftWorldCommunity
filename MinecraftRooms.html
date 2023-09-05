@@ -23,7 +23,8 @@
             text-align: left;
             background-image: url("MinecraftWorld.png");
             background-position: center;
-            background-size: cover;
+            background-size:1500px;
+            background-repeat: repeat-y;
         }
 
         #logo {
@@ -55,18 +56,29 @@
         .roomName {
             cursor: pointer;
             font-size: 20px;
+            width:360px;
+            background-color: rgba(100, 148, 237, 0.274);
+            padding: 5px;
+            border-style: ridge;
+            border-width: 4px;
+            border-color: rgba(0, 128, 0, 0.555);
+            color: rgba(0, 231, 0, 0.555);
+        }
+        .roomName:hover{
+            font-size: 25px;
+            padding: 7px;
+            width:1300px;
         }
     </style>
 </head>
 
 <body onload="loadUser()">
-    <img src="MinecraftSitesLogo.png" id="Logo">
+    <img src="MinecraftSitesLogo.png" id="Logo" title="MINECRAFT WORLD COMMUNITY">
     <button id="Exit" onclick="logout()">Log-Out</button>
     <br>
-    <img src="UserCreeper.png" width="30px" height="30px"><br>
-    <p id="userName"></p>
+    <span title="user"><img src="UserCreeper.png" width="30px" height="30px"> <p id="userName"></p></span>
     <hr>
-    <div class="form-group input_div_room_page">
+    <div class="form-group input_div_room_page" title="Add a room (without spaces)">
         <label>Add a new Minecraft Room:</label>
         <br>
         <input type="text" id="roomName" placeholder="#room">
@@ -78,7 +90,7 @@
     <hr>
     <h3 class="color_white">Minecraft Rooms</h3>
 
-    <div id="output"></div>
+    <div id="output" title="Minecraft Community Rooms"></div>
 </body>
 
 </html>
