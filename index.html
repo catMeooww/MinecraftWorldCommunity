@@ -9,18 +9,24 @@
     <script src="main.js"></script>
     <link rel="icon" type="image/png" href="UserCreeper.png" />
     <style>
+        @font-face {
+            font-family: Minecraft;
+            src: url(Minecraft.ttf);
+        }
+
         body {
             text-align: center;
             background-image: url("MINECRAFT_img_background.jpg");
             background-position: center;
             background-size: cover;
+            font-family: Minecraft;
         }
 
         #username {
             width: 800;
         }
 
-        #OtherPages{
+        #OtherPages {
             position: fixed;
             bottom: 0%;
             background-color: rgba(75, 75, 75, 0.623);
@@ -28,8 +34,16 @@
             width: 100%;
             color: rgba(0, 255, 0, 0.863);
         }
-        #OtherPages a{
+
+        #OtherPages a {
             color: rgba(0, 255, 157, 0.863);
+        }
+
+        .mc-btn{
+            display: inline-block;
+            padding: 10px;
+            border: 5px ridge green;
+            background-color: rgba(0, 0, 0, 0.329);
         }
     </style>
 </head>
@@ -43,8 +57,8 @@
     <h1 style="color:aliceblue">Welcome to the MINECRAFT COMMUNITY WEBSITE</h1>
     <label style="color: aliceblue;">log-in:</label>
     <input type="text" id="username"
-        placeholder="coloque aqui seu nome de usuário (pode ser seu nome no Minecraft)"><sup>   
-            <button class="btn btn-info" onclick="login()">log-in</button></sup>
+        placeholder="coloque aqui seu nome de usuário (pode ser seu nome no Minecraft)"><sup>
+        <button class="btn btn-info" onclick="login()">log-in</button></sup>
     <br>
     <br>
     <br>
@@ -53,11 +67,21 @@
     <br>
     <div id="OtherPages">
         <p>Visit our other Minecraft Websites</p>
-        <span>
+        <div class="mc-btn">
             <a href="https://catmeooww.github.io/MinecraftPedia/">MinecraftPédia</a><br>
+        </div>
+        <div class="mc-btn">
             <a href="https://catmeooww.github.io/Minecraft-Filter/">Minecraft Filter</a><br>
+        </div>
+        <div class="mc-btn">
             <a href="https://catmeooww.github.io/The-Minecraft-World-News/">Minecraft News</a><br>
-        </span>
+        </div>
+        <div class="mc-btn">
+            <a href="https://catmeooww.github.io/Minecraft-Builder-Blog/">Minecraft Builders Blog</a><br>
+        </div>
+        <div class="mc-btn">
+            <a href="https://catmeooww.github.io/Minecraft-Listing/">Minecraft Lists</a><br>
+        </div>
     </div>
 </body>
 

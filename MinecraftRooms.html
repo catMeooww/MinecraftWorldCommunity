@@ -16,16 +16,21 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
 
     <script defer src="rooms.js"></script>
-    
+
     <link rel="icon" type="image/png" href="MinecraftLogo.jpg" />
 
     <style>
+        @font-face {
+            font-family: Minecraft;
+            src: url(Minecraft.ttf);
+        }
+
         body {
             background-color: rgb(144, 245, 206);
             text-align: left;
             background-image: url("MinecraftWorld.png");
             background-position: center;
-            background-size:1500px;
+            background-size: 1500px;
             background-repeat: repeat-y;
         }
 
@@ -58,7 +63,8 @@
         .roomName {
             cursor: pointer;
             font-size: 20px;
-            width:360px;
+            font-family: Minecraft;
+            width: 360px;
             background-color: rgba(100, 148, 237, 0.274);
             padding: 5px;
             border-style: ridge;
@@ -66,10 +72,11 @@
             border-color: rgba(0, 128, 0, 0.555);
             color: rgba(0, 231, 0, 0.555);
         }
-        .roomName:hover{
+
+        .roomName:hover {
             font-size: 25px;
             padding: 7px;
-            width:1300px;
+            width: 1300px;
         }
     </style>
 </head>
@@ -78,7 +85,9 @@
     <img src="MinecraftSitesLogo.png" id="Logo" title="MINECRAFT WORLD COMMUNITY">
     <button id="Exit" onclick="logout()">Log-Out</button>
     <br>
-    <span title="user"><img src="UserCreeper.png" width="30px" height="30px"> <p id="userName"></p></span>
+    <span title="user"><img src="UserCreeper.png" width="30px" height="30px">
+        <p id="userName"></p>
+    </span>
     <hr>
     <div class="form-group input_div_room_page" title="Add a room (without spaces)">
         <label>Add a new Minecraft Room:</label>
