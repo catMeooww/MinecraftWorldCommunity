@@ -29,7 +29,8 @@ function send() {
 function getData() {
   firebase.database().ref("/" + roomName).on('value', function (snapshot) {
     document.getElementById("output").innerHTML = ""; snapshot.forEach(function (childSnapshot) {
-      childKey = childSnapshot.key; childData = childSnapshot.val(); if (childKey != "purpose") {
+      childKey = childSnapshot.key; childData = childSnapshot.val();
+      if (childKey != "purpose") {
         firebaseMessageId = childKey;
         messageData = childData;
         //Início do código
@@ -40,12 +41,18 @@ function getData() {
         like = messageData['like'];
         nameWithTag = "<h4 style='text-shadow:5px 5px 5px black'> " + name + "<img class='user_tick' src='UserCreeper.png'></h4>";
         messageWithTag = "<h4 class='message_h4'>" + message + "</h4>";
-        like_button = "<button class='btn btn-success' id=" + firebaseMessageId + " value=" + like + " onclick='updateLike(this.id)'>";
-        spanWithTag = "<span class='glyphicon glyphicon-thumbs-up'> Like: " + like + "</span></button><hr>";
-
-        row = nameWithTag + messageWithTag + like_button + spanWithTag;
+        like_button = "<button class='MCButton' id=" + firebaseMessageId + " onclick='updateLike(this.id)'><img src='Diamond.png' id='icon'> Likes:" + like + "</button>";
+        delete_button = "<button class='MCButton' id=" + firebaseMessageId + " onclick='deleteMsg(this.id)'><img src='tnt.webp' id='icon'> delete:" + firebaseMessageId + "</button>";
+        hr = "<hr>"
+        if (name == userName) {
+          row = nameWithTag + messageWithTag + delete_button + hr;
+        } else {
+          row = nameWithTag + messageWithTag + like_button + hr;
+        }
         document.getElementById("output").innerHTML += row;
         //Fim do código
+      } else {
+        document.getElementById("output").innerHTML += "<h3>" + childData + "</h3>";
       }
     });
   });
@@ -62,11 +69,45 @@ function updateLike(messageId) {
   firebase.database().ref(roomName).child(messageId).update({
     like: updatedLikes
   });
-
 }
 
+function deleteMsg(messageId) {
+  swal(
+    {
+      title: `DELETE THIS MESSAGE`,
+      text: "Are you sure DELETING this?",
+      imageUrl:
+        "tnt.webp",
+      imageSize: "150x150",
+      confirmButtonText: "DELETE MESSAGE"
+    },
+    function (isConfirm) {
+      if (isConfirm) {
+        firebase.database().ref(roomName).child(messageId).update({
+          name: null,
+          message: null,
+          like: null
+        });
+      }
+    }
+  );
+}
 
 function logout() {
-  localStorage.removeItem("room");
-  window.location = "MinecraftRooms.html";
+  swal(
+    {
+      title: `Leave Room`,
+      text: "Want to leave this room?",
+      imageUrl:
+        "exitdoor.webp",
+      imageSize: "150x150",
+      confirmButtonText: "Leave Room"
+    },
+    function (isConfirm) {
+      if (isConfirm) {
+        localStorage.removeItem("room");
+        window.location = "MinecraftRooms.html";
+      }
+    }
+  );
 }

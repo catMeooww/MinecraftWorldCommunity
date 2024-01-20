@@ -18,6 +18,20 @@ function loadUser() {
   user = localStorage.getItem("user");
   document.getElementById("userName").innerHTML = user;
 }
+
+function showOptions(option) {
+  if (option == 1) {
+    document.getElementById("RoomOptions").innerHTML = "<div><input placeholder='search room' id='roomSearch' class='MCButton'><button class='btn btn-success MCButton' onclick='searchRoom()'>Search</button></div>";
+  } else if (option == 2) {
+    document.getElementById("RoomOptions").innerHTML = "<div class='form-group input_div_room_page' title='Add a room'><label>Add a new Minecraft Room:</label><br><input type='text' id='roomName' placeholder='#room' class='MCButton'><button class='MCButton' style='background-color: rgb(233, 79, 8);border-radius: 5px;' onclick='selectGamemode()'id='gamemode'>survival</button></div><button onclick='addRoom();' class='btn btn-success MCButton'>Add Room</button><p>Dont Use Spaces</p>"
+  }
+}
+
+function searchRoom(){
+  searchData = document.getElementById("roomSearch").value;
+  redirectToRoomName(searchData);
+}
+
 function selectGamemode() {
   if (gamemode == "survival") {
     gamemode = "creative";
@@ -30,6 +44,7 @@ function selectGamemode() {
   }
   console.log(gamemode);
 }
+
 function addRoom() {
   roomName = document.getElementById("roomName").value;
   firebase.database().ref("/").child(roomName).update({
@@ -64,7 +79,21 @@ function redirectToRoomName(name) {
 }
 
 function logout() {
-  localStorage.removeItem("user");
-  localStorage.removeItem("room");
-  window.location = "index.html";
+  swal(
+    {
+      title: `Logout`,
+      text: "Want to exit site?",
+      imageUrl:
+        "exitdoor.webp",
+      imageSize: "150x150",
+      confirmButtonText: "Log Out"
+    },
+    function (isConfirm) {
+      if (isConfirm) {
+        localStorage.removeItem("user");
+        localStorage.removeItem("room");
+        window.location = "index.html";
+      }
+    }
+  );
 }

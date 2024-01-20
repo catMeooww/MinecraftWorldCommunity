@@ -16,6 +16,9 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <script defer src="MinecraftPage.js"></script>
 
+    <script src="alert/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="alert/sweetalert.css">
+
     <link rel="icon" type="image/png" href="MinecraftPageLogo.jpg" />
 
     <style>
@@ -93,6 +96,16 @@
         #mensageButton {
             width: 10%;
         }
+
+        .MCButton{
+           background-color: rgba(165, 127, 255, 0.5);
+           border:5px ridge green;
+        }
+
+        #icon{
+            width: 30px;
+            height: 30px;
+        }
     </style>
 </head>
 
@@ -103,7 +116,7 @@
     <hr><br>
     <center>
         <div id="output">
-            <p>-----A new Minecraft Room Started!-----
+            <p>LOADING
                 <hr>
             </p>
         </div>
