@@ -15,15 +15,35 @@ firebase.initializeApp(firebaseConfig);
 userName = localStorage.getItem("user");
 roomName = localStorage.getItem("room");
 
+document.getElementById("UserNameShow").innerHTML = "User: " + userName;
+
+var SType = "text";
+
 function send() {
   msg = document.getElementById("msg").value;
+  if(SType == "text"){
   firebase.database().ref(roomName).push({
     name: userName,
     message: msg,
-    like: 0
+    like: 0,
+    type: "text"
   });
-
-  document.getElementById("msg").value = "";
+}else if(SType == "img"){
+  firebase.database().ref(roomName).push({
+    name: userName,
+    message: msg,
+    like: 0,
+    type: "img"
+  });
+}else if(SType == "anchor"){
+  firebase.database().ref(roomName).push({
+    name: userName,
+    message: msg,
+    like: 0,
+    type: "anchor"
+  });
+}
+document.getElementById("msg").value = "";
 }
 
 function getData() {
@@ -34,18 +54,25 @@ function getData() {
         firebaseMessageId = childKey;
         messageData = childData;
         //Início do código
-        console.log(firebaseMessageId);
-        console.log(messageData);
+        console.log("Load Message: " + firebaseMessageId);
         name = messageData['name'];
         message = messageData['message'];
         like = messageData['like'];
+        type = messageData['type'];
         nameWithTag = "<h4 style='text-shadow:5px 5px 5px black'> " + name + "<img class='user_tick' src='UserCreeper.png'></h4>";
-        messageWithTag = "<h4 class='message_h4'>" + message + "</h4>";
-        like_button = "<button class='MCButton' id=" + firebaseMessageId + " onclick='updateLike(this.id)'><img src='Diamond.png' id='icon'> Likes:" + like + "</button>";
+        if (type == "text" || type == undefined) {
+          messageWithTag = "<h4 class='message_h4'>" + message + "</h4>";
+        }else if(type == "img"){
+          messageWithTag = "<img class='message_img' src='"+message+"'><br>";
+        }else if(type == "anchor"){
+          messageWithTag = "<a class='message_anchor' href='"+message+"'>View Website -"+message+"</a><br><br>";
+        }
+        like_button = "<button class='MCButton' id=" + firebaseMessageId + " onclick='updateLike(this.id," + like + ")'><img src='Diamond.png' id='icon'> Likes:" + like + "</button>";
+        like_info = "<h4 class='MCButton' style='border-color:cyan;'><img src='Diamond.png' id='icon'> Likes:"+like+"</h4>";
         delete_button = "<button class='MCButton' id=" + firebaseMessageId + " onclick='deleteMsg(this.id)'><img src='tnt.webp' id='icon'> delete:" + firebaseMessageId + "</button>";
-        hr = "<hr>"
+        hr = "<hr>";
         if (name == userName) {
-          row = nameWithTag + messageWithTag + delete_button + hr;
+            row = nameWithTag + messageWithTag + like_info +delete_button + hr;
         } else {
           row = nameWithTag + messageWithTag + like_button + hr;
         }
@@ -59,12 +86,9 @@ function getData() {
 }
 getData();
 
-function updateLike(messageId) {
-  console.log("botão de like pressionado - " + messageId);
-  buttonId = messageId;
-  likes = document.getElementById(buttonId).value;
+function updateLike(messageId, likes) {
+  console.log("Add Like - " + messageId, " | " + likes);
   updatedLikes = Number(likes) + 1;
-  console.log(updatedLikes);
 
   firebase.database().ref(roomName).child(messageId).update({
     like: updatedLikes
@@ -86,11 +110,29 @@ function deleteMsg(messageId) {
         firebase.database().ref(roomName).child(messageId).update({
           name: null,
           message: null,
-          like: null
+          like: null,
+          type: null
         });
       }
     }
   );
+}
+
+function switchType(){
+  if(SType == "text"){
+    SType = "img";
+    document.getElementById("TypeButton").innerHTML = "Image";
+    document.getElementById("msg").placeholder = "Image URL";
+  }else if(SType == "img"){
+    SType = "anchor";
+    document.getElementById("TypeButton").innerHTML = "Link";
+    document.getElementById("msg").placeholder = "Link";
+  }else{
+    SType = "text";
+    document.getElementById("TypeButton").innerHTML = "Text";
+    document.getElementById("msg").placeholder = "Mensagem";
+  }
+  console.log(SType);
 }
 
 function logout() {
