@@ -21,15 +21,19 @@ function loadUser() {
 
 function showOptions(option) {
   if (option == 1) {
-    document.getElementById("RoomOptions").innerHTML = "<div><input placeholder='search room' id='roomSearch' class='MCButton'><button class='mc-do-button' onclick='searchRoom()'>Search</button></div>";
+    document.getElementById("RoomOptions").innerHTML = "<div><input placeholder='search room' id='roomSearch' class='MCButton'><button class='mc-do-button' onclick='searchRoom()'>Search</button></div><p id='addOutput'>Dont Use Spaces</p>";
   } else if (option == 2) {
-    document.getElementById("RoomOptions").innerHTML = "<div class='form-group input_div_room_page' title='Add a room'><label>Add a new Minecraft Room:</label><br><input type='text' id='roomName' placeholder='#room' class='MCButton'><button class='MCButton' style='background-color: rgb(233, 79, 8);' onclick='selectGamemode()'id='gamemode'>survival</button></div><button onclick='addRoom();' class='mc-do-button'>Add Room</button><p>Dont Use Spaces</p>"
+    document.getElementById("RoomOptions").innerHTML = "<div class='form-group input_div_room_page' title='Add a room'><label>Add a new Minecraft Room:</label><br><input type='text' id='roomName' placeholder='#room' class='MCButton'><button class='MCButton' style='background-color: rgb(233, 79, 8);' onclick='selectGamemode()'id='gamemode'>survival</button></div><button onclick='addRoom();' class='mc-do-button'>Add Room</button><p id='addOutput'>Dont Use Spaces</p>"
   }
 }
 
 function searchRoom(){
   searchData = document.getElementById("roomSearch").value;
+  if(!searchData == ""){
   redirectToRoomName(searchData);
+  }else{
+    document.getElementById("addOutput").innerHTML = "Room name can not be empty";
+  }
 }
 
 function selectGamemode() {
@@ -47,6 +51,7 @@ function selectGamemode() {
 
 function addRoom() {
   roomName = document.getElementById("roomName").value;
+  if(!roomName == ""){
   firebase.database().ref("/").child(roomName).update({
     purpose: roomName + " - Gamemode: " + gamemode
   });
@@ -54,6 +59,9 @@ function addRoom() {
   localStorage.setItem("room", roomName);
 
   window.location = "MinecraftPage.html";
+}else{
+  document.getElementById("addOutput").innerHTML = "Room name can not be empty";
+}
 }
 
 function getData() {
