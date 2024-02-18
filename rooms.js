@@ -21,9 +21,9 @@ function loadUser() {
 
 function showOptions(option) {
   if (option == 1) {
-    document.getElementById("RoomOptions").innerHTML = "<div><input placeholder='search room' id='roomSearch' class='MCButton'><button class='btn btn-success MCButton' onclick='searchRoom()'>Search</button></div>";
+    document.getElementById("RoomOptions").innerHTML = "<div><input placeholder='search room' id='roomSearch' class='MCButton'><button class='mc-do-button' onclick='searchRoom()'>Search</button></div>";
   } else if (option == 2) {
-    document.getElementById("RoomOptions").innerHTML = "<div class='form-group input_div_room_page' title='Add a room'><label>Add a new Minecraft Room:</label><br><input type='text' id='roomName' placeholder='#room' class='MCButton'><button class='MCButton' style='background-color: rgb(233, 79, 8);border-radius: 5px;' onclick='selectGamemode()'id='gamemode'>survival</button></div><button onclick='addRoom();' class='btn btn-success MCButton'>Add Room</button><p>Dont Use Spaces</p>"
+    document.getElementById("RoomOptions").innerHTML = "<div class='form-group input_div_room_page' title='Add a room'><label>Add a new Minecraft Room:</label><br><input type='text' id='roomName' placeholder='#room' class='MCButton'><button class='MCButton' style='background-color: rgb(233, 79, 8);' onclick='selectGamemode()'id='gamemode'>survival</button></div><button onclick='addRoom();' class='mc-do-button'>Add Room</button><p>Dont Use Spaces</p>"
   }
 }
 

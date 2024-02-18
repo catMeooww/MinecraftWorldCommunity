@@ -45,6 +45,23 @@
             border: 5px ridge green;
             background-color: rgba(0, 0, 0, 0.329);
         }
+
+        .mc-input{
+            height: 40px;
+            border: 5px ridge green;
+            background-color: aliceblue;
+        }
+
+        .mc-join{
+            color: aliceblue;
+            height: 40px;
+            border: 5px ridge green;
+            background-color:cadetblue;
+        }
+
+        #log-div{
+            display: inline;
+        }
     </style>
 </head>
 
@@ -55,10 +72,12 @@
     <br>
     <br>
     <h1 style="color:aliceblue">Welcome to the MINECRAFT COMMUNITY WEBSITE</h1>
+    <div id="log-div">
     <label style="color: aliceblue;">log-in:</label>
-    <input type="text" id="username"
-        placeholder="coloque aqui seu nome de usuário (pode ser seu nome no Minecraft)"><sup>
-        <button class="btn btn-info" onclick="login()">log-in</button></sup>
+    <input type="text" id="username" class="mc-input"
+        placeholder="Type here you user name, it can be your Minecraft Nickname">
+        <button class="mc-join" onclick="login()">log-in</button>
+    </div>
     <br>
     <br>
     <br>

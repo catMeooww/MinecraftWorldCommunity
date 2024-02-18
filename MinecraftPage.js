@@ -130,7 +130,7 @@ function switchType(){
   }else{
     SType = "text";
     document.getElementById("TypeButton").innerHTML = "Text";
-    document.getElementById("msg").placeholder = "Mensagem";
+    document.getElementById("msg").placeholder = "Mesage";
   }
   console.log(SType);
 }

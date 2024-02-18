@@ -144,6 +144,13 @@
             float: left;
             width: 200px;
         }
+
+        .mc-do-button{
+            color: aliceblue;
+            height: 40px;
+            border: 5px ridge green;
+            background-color:blueviolet;
+        }
     </style>
 </head>
 
@@ -161,11 +168,11 @@
     </center>
     <br>
     <div title="Send mensages in this Minecraft Room" class="inputDivMessagePage" style="background-color: aliceblue;">
-        <label>Enviar:</label><br>
+        <label>Send in Chat:</label><br>
         <div id="sendbar">
             <button onclick="switchType()" class="MCButton" id="TypeButton">Text</button>
-            <input type="text" id="msg" style="width: 600px;font-family: Minecraft;" placeholder="Mensagem">
-            <button onclick="send()" class="btn btn-success">Enviar</button>
+            <input type="text" id="msg" style="width: 600px;font-family: Minecraft;" placeholder="Mesage">
+            <button onclick="send()" class="mc-do-button">Send</button>
         </div>
         <h4 id="UserNameShow" class="MCButton"></h4>
         <br>
