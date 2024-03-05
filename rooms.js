@@ -16,6 +16,9 @@ gamemode = "survival"
 
 function loadUser() {
   user = localStorage.getItem("user");
+  if(user == undefined){
+    window.location = "index.html";
+  }
   document.getElementById("userName").innerHTML = user;
 }
 

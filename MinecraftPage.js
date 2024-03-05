@@ -15,6 +15,10 @@ firebase.initializeApp(firebaseConfig);
 userName = localStorage.getItem("user");
 roomName = localStorage.getItem("room");
 
+if(userName == undefined || roomName == undefined){
+  window.location = "index.html";
+}
+
 document.getElementById("UserNameShow").innerHTML = "User: " + userName;
 
 var SType = "text";
